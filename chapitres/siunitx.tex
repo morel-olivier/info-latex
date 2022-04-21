@@ -1,0 +1,23 @@
+\section{Siunitx}
+\subsection{Introduction}
+Le package sfs
+
+\subsection{Usage basique}
+\begin{tabularx}{0.8\textwidth}{ |X |l |l |}
+	action	& commande	& résultat	\\
+	\hline
+	écrire un nombre	& \verb|\num{3.14}|	& \num{3.14}	\\
+	\hline
+	\multirow{4}{40mm}{écrire une unité}	& \verb|\si{\m}|		& \si{\m}\\
+											& \verb|\si{\kg}|		& \si{\kg}\\
+											& \verb|\si{\per\s}|	& \si{\per\s}\\
+											& \verb|\si{\m\per\kg}|	& \si{\m\per\kg}\\
+	\hline
+	\multirow{3}{40mm}{écrire un résultat}	& \verb|\SI{1.234e14}{\mol}|		& \SI{1.234e14}{\mol}\\
+											& \verb|\SI{1.23456}{\mol}|		& \SI{1.23456}{\mol}\\
+											& \verb|\SI{123456}{\mol}|		& \SI{123456}{\mol}\\
+	\hline
+	écrire un angle		& \verb|\ang{13.346}|	& \ang{13.346}\\
+\end{tabularx}
+
+Attention aux changement de minuscules et majuscule.
