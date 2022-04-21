@@ -1,14 +1,18 @@
 \section{Siunitx}
 \subsection{Introduction}
-Le package sfs
+Le package \emph{siunitx} aide le rédacteur à écrire des valeurs numériques et des unités simplement et de manière consistante.
+Il offre des possibilités de configurations trés complexes.
+Les exemples proposés ici sont spécifiques à la configuration de siunitx trouvée dans les templates sur \url{https://github.com/morel-olivier/latex-templates}
 
 \subsection{Usage basique}
-\begin{tabularx}{0.8\textwidth}{ |X |l |l |}
+\begin{tabularx}{0.8\textwidth}{ l l l }
+	\hline
 	action	& commande	& résultat	\\
 	\hline
 	écrire un nombre	& \verb|\num{3.14}|	& \num{3.14}	\\
 	\hline
-	\multirow{4}{40mm}{écrire une unité}	& \verb|\si{\m}|		& \si{\m}\\
+	\multirow{5}{40mm}{écrire une unité}	& \verb|\si{\m}|		& \si{\m}\\
+											& \verb|\si{\km}|		& \si{\km}\\
 											& \verb|\si{\kg}|		& \si{\kg}\\
 											& \verb|\si{\per\s}|	& \si{\per\s}\\
 											& \verb|\si{\m\per\kg}|	& \si{\m\per\kg}\\
@@ -18,6 +22,7 @@ Le package sfs
 											& \verb|\SI{123456}{\mol}|		& \SI{123456}{\mol}\\
 	\hline
 	écrire un angle		& \verb|\ang{13.346}|	& \ang{13.346}\\
+	\hline
 \end{tabularx}
 
 Attention aux changement de minuscules et majuscule.

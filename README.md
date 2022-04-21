@@ -9,3 +9,4 @@ Information sur l'utilisation de latex et des templates.
 	- aligner les virgules dans les tables
 	- expliquer la configuration actuelles
 - inclure du python
+- utilisation de git et github
