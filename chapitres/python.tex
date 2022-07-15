@@ -12,6 +12,98 @@ Il est démontré comment l'installer et l'utiliser sur VS Code avec l'extension
 \subsection{Linux}
 L'installation a été testée sur Ubuntu 21.10.
 
-\subsection{Configuration de VS Code}
+Premièrement, il faut vérifier si python est bien installé.
+Pour ce faire, il faut entrer qu'une de ces commandes donne un résultat.
+\begin{minted}{bash}
+	$ python2 -V
+	Python 2.7.18
+	$ python3 -V
+	Python 3.9.7
+\end{minted}
 
-\section{Utilisation}
+Si ce n'est pas le cas, installez python avec la commande :
+\begin{minted}{bash}
+	$ sudo apt install python3
+\end{minted}
+Il semblerait que certaine librairie puisse ne pas être compatible avec python3 dans ce cas, vous pouvez installer python2.
+
+Pour l'Utilisation avec VS Code, il faut préciser quel python doit être appelé par défaut.
+Vérifiez ensuite que vous avez un python qui peut être appelé par défaut :
+\begin{minted}{bash}
+	$ sudo update-alternatives --list python
+	update-alternatives: error: no alternatives for python
+\end{minted}
+
+Dans ce cas, entrez la commande suivante :
+\begin{minted}[breaklines=true]{bash}
+	$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+\end{minted}
+
+Vous avez maintenant une version de python par défaut que vous pouvez vérifier avec :
+\begin{minted}{bash}
+	$ python -V
+	Python 3.9.7
+\end{minted}
+
+\subsection{Configuration de VS Code}
+Afin de pouvoir utiliser pythontex, il faut encore créer une règle pour que VSCode compile correctement.
+Pour ce faire il faut modifier le fichier settings.json qui contient touts les réglages de VS code.
+Pour l'ouvrir, utiliser le racourci CTRL + MAJ + p.
+Ensuite taper : "Settings: Open Settings (JSON).
+Sous latex-workshop.latex.tools ajouter le code du Listing \ref{mint:configpythontex}.
+
+\begin{listing}[H]
+	\begin{minted}{json}
+{
+	"name": "pythontex",
+	"command": "pythontex",
+	"args": [
+		"%DOC%"
+	],
+	"env": {}
+},
+	\end{minted}
+	\caption{Configuration de pythonrex}
+	\label{mint:configpythontex}
+\end{listing}
+
+Vérifiez ensuite qu'il existe bien une configuration pour pdflatex.
+Sinon ajoutez le code du Listing \ref{mint:configpdflatex}.
+
+\begin{listing}[H]
+	\begin{minted}{json}
+{
+	"name": "pdflatex",
+	"command": "pdflatex",
+	"args": [
+		"-synctex=1",
+		"-interaction=nonstopmode",
+		"--shell-escape",
+		"-file-line-error",
+		"%DOC%"
+	],
+	"env": {}
+},
+	\end{minted}
+	\caption{Configuration de pdflatex}
+	\label{mint:configpdflatex}
+\end{listing}
+
+Enfin aller sous "latex-workshop.latex.recipes" et ajouter le code du Listing \ref{}.
+
+\begin{listing}[H]
+	\begin{minted}{json}
+{
+	"name": "pdflatex -> pythontex -> pdflatex",
+	"tools": [
+		"pdflatex",
+		"pythontex",
+		"pdflatex"
+	]
+},
+	\end{minted}
+	\caption{Configuration de la recette}
+	\label{mint:recette}
+\end{listing}
+
+\subsection{Utilisation}

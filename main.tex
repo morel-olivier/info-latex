@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Paramétrage du papier utilisé
-\documentclass[a4paper,12pt,oneside]{article}
+\documentclass[a5paper,12pt,oneside]{article}
 
 % Ne pas toucher, nécessaire à la mise en forme
 \usepackage[utf8x]{inputenc} 
@@ -16,7 +16,7 @@
 \usepackage{graphicx} % Insertion images
 \usepackage{float}  % allow to force the placement of picture with 'H'
 \usepackage{epstopdf} % Convertir les images eps vers pdf
-\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm, showframe=false]{geometry}
+\usepackage[top=1.7cm, bottom=2cm, left=1cm, right=1cm, showframe=false]{geometry}
 \usepackage{amsmath}
 %\usepackage{hyperref}  % used to produce hyperlink when referencing but those links are marked by big red square on pdf softwares (in theory not when printed)
 \usepackage{pdfpages}   % allow to include multipages pdf in document
@@ -24,9 +24,14 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{lastpage}
-\usepackage[load-configurations = abbreviations]{siunitx}	% also load some abbreviations
+\usepackage{siunitx}	% also load some abbreviations
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{minted}
+\usepackage{adjustbox}	% to rotate table
+
+\usemintedstyle{colorful}
+\setminted{frame=single,fontsize=\footnotesize}
 
 \epstopdfsetup{outdir=./Images/converted_to_pdf/} % Dossier de sortie des images converties
 \pagenumbering{arabic}
@@ -83,9 +88,20 @@
 \tableofcontents
 \clearpage
 	
+\section{Config VS code}
+Activer l'option auto clean sur on built
+
 \input{chapitres/Introduction.tex}
+\clearpage
 \input{chapitres/liens-utiles.tex}
+\clearpage
 \input{chapitres/siunitx.tex}
+\clearpage
 \input{chapitres/python.tex}
+\clearpage
+\input{chapitres/minted.tex}
+\clearpage
+\input{chapitres/table.tex}
+\clearpage
 
 \end{document}
